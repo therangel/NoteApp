@@ -1,0 +1,207 @@
+
+.notes-section-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    padding: 0px 10px 20px 10px;
+    /* max-width: 600px;  */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.title {
+    line-height: 100%;
+    color: var(--color1);
+    font-size: clamp(1.5rem, 5vw, 2.3rem);
+}
+
+.note-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; 
+    
+}
+
+/* Note Card */
+
+.li-note {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-items: start;
+    gap: 15px;
+    /* text-wrap: wrap; */
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+
+    height: 400px;
+    min-width: 250px;
+    max-width: 350px;
+
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.5);
+
+}
+
+.note-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.note-date {
+    font-size: 0.7rem;
+    text-wrap: wrap;
+    word-break: break-all;
+}
+
+.delete-note {
+    width: 50%;
+    padding: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(179, 18, 18);
+    color: white;
+    box-shadow: 0px 2px 1px black;
+}
+
+.note-text {
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+
+    word-break: break-all;
+    overflow-y:  auto;
+}
+
+/* MODAL NEW NOTE */
+
+.open-modal-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.open-modal-btn::before {
+    content: "new note";
+    position: absolute;
+    top: -20%;
+    left: -200%;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    padding: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 3px white;
+    opacity: 0;
+    transition: .3s;
+}
+
+.open-modal-btn:hover::before{
+    opacity: 1;
+}
+
+.open-modal-btn span {
+    position: absolute;
+    background-color: black;
+    height: 3px;
+    width: 15px;
+}
+
+.open-modal-btn span:nth-child(1){
+    transform: rotate(90deg);
+}
+
+.modal-note{ 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    
+    flex-direction: column;
+    gap: 1.2rem;
+
+    max-width: 400px;
+    width: 90%;
+    height: 400px;
+
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.4);
+    background-color: rgba(211, 211, 211);
+
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.modal-note.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.close-modal-btn {
+    padding: 0.6rem;
+    border-radius: 5px;
+    background-color: rgb(207, 39, 39);
+    color: white;
+    cursor: pointer;
+
+}
+
+.modal-note-text {
+    height: 100%;
+    resize: none;
+    padding: 1rem;  
+    background-color: rgba(255, 255, 255, 0.3);
+    outline: none;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.7);
+}
+
+.modal-add-btn {
+    padding: .5rem 1.2rem;
+    align-self: end;
+    cursor: pointer;
+}
+
+
+
+
+@media screen and (min-width: 1024px) {
+
+    /* .my-notes {
+        width: 50%;
+    } */
+
+    /* .favorites {
+        width: 50%;
+    } */
+    
+
+}
