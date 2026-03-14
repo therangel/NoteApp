@@ -32,6 +32,16 @@ closeNoteModal.addEventListener("click", () => {
 })
 
 
+let selectorColorNote = "#ffffff"
+
+document.querySelectorAll(".btn-color-note").forEach(color => {
+    color.addEventListener("click", () => {
+        selectorColorNote = color.dataset.color
+        noteModal.style.backgroundColor = selectorColorNote
+    })
+})
+
+
 const list = document.getElementById("note-list");
 
 let notes = []
@@ -63,7 +73,6 @@ function deleteNote(id) {
     renderTask()
 }
 
-
 function renderTask() {
 
     console.log(notes)
@@ -72,7 +81,7 @@ function renderTask() {
     notes.forEach(note => {
         const li = document.createElement("li")
         li.classList.add("li-note")
-
+        li.style.backgroundColor = selectorColorNote
         const noteHeader = document.createElement("div")
         noteHeader.classList.add("note-header")
 
@@ -96,6 +105,7 @@ function renderTask() {
         noteHeader.append(noteDate, btnDel)
         li.append(noteHeader, noteText)
         list.appendChild(li)
+
     })
 }
 

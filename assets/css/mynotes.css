@@ -40,7 +40,7 @@
     justify-items: start;
     gap: 15px;
     /* text-wrap: wrap; */
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgb(209, 209, 209);
     padding: 20px;
 
     height: 400px;
@@ -141,13 +141,14 @@
     gap: 1.2rem;
 
     max-width: 400px;
-    width: 90%;
+    width: 85%;
     height: 400px;
+    min-width: 180px;
 
     padding: 1.2rem;
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.4);
-    background-color: rgba(211, 211, 211);
+    background-color: rgb(209, 209, 209);
 
     opacity: 0;
     pointer-events: none;
@@ -161,12 +162,76 @@
 
 .modal-header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    
+    gap: 10px;
+    justify-content: space-between;   
 }
 
+.title-modal {
+    font-size: clamp(1rem, 5vw, 1.3rem);
+}
+
+.note-colors {
+    display: flex;
+    order: 1;
+    width: 100%;
+    gap: 15px;
+}
+
+.btn-color-note {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.btn-color-note.default {
+    background-color: rgba(211, 211, 211); 
+}
+
+.btn-color-note.red {
+    background-color: rgb(255, 57, 57);
+}
+
+.btn-color-note.green {
+    background-color: rgb(0, 197, 0);
+}
+.btn-color-note.blue {
+    background-color: rgb(43, 43, 255);
+}
+.btn-color-note.yellow {
+    background-color: rgb(253, 253, 127);
+}
+
+/* Background Modal/Note */
+
+.modal-note.defaultColor,
+.li-note.defaultColor {
+    background-color: rgb(209, 209, 209);
+}
+
+.modal-note.redColor,
+.li-note.redColor {
+    background-color: #ff6b6b;
+}
+.modal-note.greenColor,
+.li-note.greenColor {
+    background-color: #83f783;
+}
+.modal-note.blueColor,
+.li-note.blueColor {
+    background-color: #96c0ff;
+}
+.modal-note.yellowColor,
+.li-note.yellowColor {
+    background-color: #ffff93;
+}
+
+
 .close-modal-btn {
+
     padding: 0.6rem;
     border-radius: 5px;
     background-color: rgb(207, 39, 39);
