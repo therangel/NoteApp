@@ -1,22 +1,4 @@
-/* 
-Pegar tarefa digitada ao clicar no botao
 
-verificar se o input esta vazio 
-
-formato a task para um obejto
-
-envio o objeto para um array [fonte de dados]
-
-renderizar/criar a task baseada no array
-
-eventos de clique
-
-localstorage
-
-*/
-
-
-// NOTE MODAL
 const openNoteModal = document.querySelector(".open-modal-btn")
 const noteModal = document.querySelector(".modal-note")
 const closeNoteModal = document.querySelector(".close-modal-btn")
@@ -31,7 +13,7 @@ closeNoteModal.addEventListener("click", () => {
     noteModal.classList.remove("active")
 })
 
-
+// Color Note
 let selectorColorNote = "#ffffff"
 
 document.querySelectorAll(".btn-color-note").forEach(color => {
@@ -48,6 +30,7 @@ let notes = []
 
 addNote.addEventListener("click", () => {
     const noteTextContent = noteText.value.trim()
+
     if(noteTextContent !== ""){
         createTask(noteTextContent)
         noteModal.classList.remove("active")
@@ -60,7 +43,8 @@ addNote.addEventListener("click", () => {
 function createTask(text) {
     const newNote = {
         id: Date.now(),
-        text: text
+        text: text,
+        color: selectorColorNote
     }
 
     notes.push(newNote)
@@ -68,10 +52,11 @@ function createTask(text) {
 }
 
 function deleteNote(id) {
-    console.log(id)
     notes = notes.filter(note => note.id !== id)
     renderTask()
 }
+
+
 
 function renderTask() {
 
@@ -81,14 +66,14 @@ function renderTask() {
     notes.forEach(note => {
         const li = document.createElement("li")
         li.classList.add("li-note")
-        li.style.backgroundColor = selectorColorNote
+        li.style.backgroundColor = note.color
+
         const noteHeader = document.createElement("div")
         noteHeader.classList.add("note-header")
 
         const noteDate = document.createElement("span")
         noteDate.textContent = new Date()
-        console.log(noteDate)
-        noteHeader.classList.add("note-date")
+        noteDate.classList.add("note-date")
     
         const btnDel = document.createElement("button");
         btnDel.textContent = "delete"
