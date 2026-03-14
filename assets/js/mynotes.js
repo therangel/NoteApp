@@ -53,16 +53,14 @@ function createNote(text) {
     selectorColorNote = "#ffffff"
     noteModal.style.backgroundColor = "#ffffff"
 
-    localStorage.setItem("notes", JSON.stringify(notes))
-
+    saveNotes()
     renderTask()  
 }
 
 function deleteNote(id) {
     notes = notes.filter(note => note.id !== id)
 
-    localStorage.setItem("notes", JSON.stringify(notes))
-
+    saveNotes()
     renderTask()
 }
 
@@ -102,12 +100,22 @@ function renderTask() {
     })
 }
 
-const savedNotes = localStorage.getItem("notes")
-
-if(savedNotes) {
-    notes = JSON.parse(savedNotes)
-    renderTask()
+function saveNotes() {
+    localStorage.setItem("notes", JSON.stringify(notes))
 }
+
+function loadNotes() {
+    const savedNotes = localStorage.getItem("notes")
+
+    if(savedNotes){
+        notes = JSON.parse(savedNotes)
+        renderTask()
+    }
+}
+
+loadNotes()
+
+
 
 
 
