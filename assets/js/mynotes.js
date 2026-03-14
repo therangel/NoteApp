@@ -44,15 +44,25 @@ function createNote(text) {
     const newNote = {
         id: Date.now(),
         text: text,
-        color: selectorColorNote
+        color: selectorColorNote,
+        date: new Date().toLocaleDateString()
     }
 
     notes.push(newNote)
-    renderTask()
+
+    selectorColorNote = "#ffffff"
+    noteModal.style.backgroundColor = "#ffffff"
+
+    localStorage.setItem("notes", JSON.stringify(notes))
+
+    renderTask()  
 }
 
 function deleteNote(id) {
     notes = notes.filter(note => note.id !== id)
+
+    localStorage.setItem("notes", JSON.stringify(notes))
+
     renderTask()
 }
 
@@ -64,32 +74,39 @@ function renderTask() {
     notes.forEach(note => {
         const li = document.createElement("li")
         li.classList.add("li-note")
-        li.style.backgroundColor = note.color
+        li.style.backgroundColor = note.color  
 
         const noteHeader = document.createElement("div")
         noteHeader.classList.add("note-header")
 
         const noteDate = document.createElement("span")
-        noteDate.textContent = new Date()
+        noteDate.textContent = note.date 
         noteDate.classList.add("note-date")
     
         const btnDel = document.createElement("button");
         btnDel.textContent = "delete"
         btnDel.classList.add("delete-note")
 
-        const noteText = document.createElement("p")
-        noteText.classList.add("note-text")
-        noteText.textContent = note.text
+        const noteTextElement = document.createElement("p")
+        noteTextElement.classList.add("note-text")
+        noteTextElement.textContent = note.text
 
         btnDel.addEventListener("click", () => {
             deleteNote(note.id)
         })
 
         noteHeader.append(noteDate, btnDel)
-        li.append(noteHeader, noteText)
+        li.append(noteHeader, noteTextElement)
         list.appendChild(li)
 
     })
+}
+
+const savedNotes = localStorage.getItem("notes")
+
+if(savedNotes) {
+    notes = JSON.parse(savedNotes)
+    renderTask()
 }
 
 
