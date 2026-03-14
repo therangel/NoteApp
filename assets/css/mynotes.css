@@ -11,11 +11,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.title {
-    line-height: 100%;
-    color: var(--color1);
-    font-size: clamp(1.5rem, 5vw, 2.3rem);
-}
 
 .note-list {
     display: flex;
@@ -50,8 +45,11 @@
     border-radius: 10px;
     color: rgb(0, 0, 0);
     box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.5);
-
+    transition: .3s ease;
+    
 }
+
+
 
 .note-header {
     display: flex;
@@ -64,6 +62,7 @@
     font-size: 0.7rem;
     text-wrap: wrap;
     word-break: break-all;
+    opacity: 0.6;
 }
 
 .delete-note {
@@ -87,6 +86,7 @@
     word-break: break-all;
     overflow-y:  auto;
 }
+
 
 /* MODAL NEW NOTE */
 
@@ -205,33 +205,8 @@
     background-color: rgb(253, 253, 127);
 }
 
-/* Background Modal/Note */
-
-.modal-note.defaultColor,
-.li-note.defaultColor {
-    background-color: rgb(209, 209, 209);
-}
-
-.modal-note.redColor,
-.li-note.redColor {
-    background-color: #ff6b6b;
-}
-.modal-note.greenColor,
-.li-note.greenColor {
-    background-color: #83f783;
-}
-.modal-note.blueColor,
-.li-note.blueColor {
-    background-color: #96c0ff;
-}
-.modal-note.yellowColor,
-.li-note.yellowColor {
-    background-color: #ffff93;
-}
-
 
 .close-modal-btn {
-
     padding: 0.6rem;
     border-radius: 5px;
     background-color: rgb(207, 39, 39);
@@ -262,10 +237,11 @@
 }
 
 
-
-
-
 @media screen and (min-width: 1024px) {
+
+    .li-note:hover {
+        transform: rotate(1deg) translateY(-3px);
+    }
 
     .modal-add-btn:hover {
         transform: scale(1.1);

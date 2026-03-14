@@ -13,6 +13,22 @@ closeNoteModal.addEventListener("click", () => {
     noteModal.classList.remove("active")
 })
 
+const list = document.getElementById("note-list");
+
+let notes = []
+
+addNote.addEventListener("click", () => {
+    const noteTextContent = noteText.value.trim()
+
+    if(noteTextContent !== ""){
+        createNote(noteTextContent)
+        noteModal.classList.remove("active")
+        noteText.value = ""
+    } else {
+        alert("Digite uma tarefa")
+    }
+})
+
 // Color Note
 let selectorColorNote = "#ffffff"
 
@@ -24,23 +40,7 @@ document.querySelectorAll(".btn-color-note").forEach(color => {
 })
 
 
-const list = document.getElementById("note-list");
-
-let notes = []
-
-addNote.addEventListener("click", () => {
-    const noteTextContent = noteText.value.trim()
-
-    if(noteTextContent !== ""){
-        createTask(noteTextContent)
-        noteModal.classList.remove("active")
-        noteText.value = ""
-    } else {
-        alert("Digite uma tarefa")
-    }
-})
-
-function createTask(text) {
+function createNote(text) {
     const newNote = {
         id: Date.now(),
         text: text,
@@ -55,8 +55,6 @@ function deleteNote(id) {
     notes = notes.filter(note => note.id !== id)
     renderTask()
 }
-
-
 
 function renderTask() {
 
