@@ -95,6 +95,7 @@
     padding: 1.1rem;
     border-radius: 50%;
     cursor: pointer;
+    background-color: var(--color1);
 }
 
 .open-modal-btn::before {
