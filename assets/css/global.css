@@ -217,6 +217,10 @@
     font-size: clamp(1.2rem, 5vw, 2rem);
 }
 
+.fa-solid {
+    color: var(--color1);
+}
+
 @media screen and (min-width: 1024px) {
 
 
