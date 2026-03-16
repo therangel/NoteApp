@@ -10,11 +10,11 @@ Em breve :
 
 1 localStorage (done)
 
-2 marcar como concluída ()
+2 marcar como favorito (done)
 
 3 contador de notas ()
 
-4 cores nas notas ()
+4 cores nas notas (done)
 
 5 editar nota ()
 

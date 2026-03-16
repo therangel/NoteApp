@@ -45,6 +45,7 @@ function createNote(text) {
         id: Date.now(),
         text: text,
         color: selectorColorNote,
+        favorite: false,
         date: new Date().toLocaleDateString()
     }
 
@@ -53,8 +54,9 @@ function createNote(text) {
     selectorColorNote = "#ffffff"
     noteModal.style.backgroundColor = "#ffffff"
 
-    saveNotes()
-    renderTask()  
+    
+    renderTask() 
+    saveNotes() 
 }
 
 function deleteNote(id) {
@@ -62,6 +64,20 @@ function deleteNote(id) {
 
     saveNotes()
     renderTask()
+}
+
+function favoriteTask(id) {
+    console.log(id)
+    notes = notes.map((note) => {
+        if (note.id === id ) {
+            return {...note, favorite: !note.favorite}
+        }
+
+        return note
+    })
+
+    saveNotes()
+    renderTask()         
 }
 
 function renderTask() {
@@ -76,6 +92,18 @@ function renderTask() {
 
         const noteHeader = document.createElement("div")
         noteHeader.classList.add("note-header")
+
+        const favBtn = document.createElement("button")
+        favBtn.classList.add("favBtn-note")
+
+        if(note.favorite){
+            favBtn.classList.add("isfav")
+            li.classList.add("isfav")
+        }
+        
+        favBtn.addEventListener("click", () => {          
+            favoriteTask(note.id)    
+        })
 
         const noteDate = document.createElement("span")
         noteDate.textContent = note.date 
@@ -93,7 +121,7 @@ function renderTask() {
             deleteNote(note.id)
         })
 
-        noteHeader.append(noteDate, btnDel)
+        noteHeader.append(favBtn, noteDate, btnDel)
         li.append(noteHeader, noteTextElement)
         list.appendChild(li)
 
@@ -114,6 +142,8 @@ function loadNotes() {
 }
 
 loadNotes()
+renderTask()
+
 
 
 
