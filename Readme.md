@@ -16,7 +16,7 @@ Em breve :
 
 4 cores nas notas (done)
 
-5 editar nota ()
+5 editar nota (done)
 
 6 busca ()
 

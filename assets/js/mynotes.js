@@ -21,7 +21,7 @@ addNote.addEventListener("click", () => {
     const noteTextContent = noteText.value.trim()
 
     if(noteTextContent !== ""){
-        createNote(noteTextContent)
+        createNoteObject(noteTextContent)
         noteModal.classList.remove("active")
         noteText.value = ""
     } else {
@@ -40,7 +40,7 @@ document.querySelectorAll(".btn-color-note").forEach(color => {
 })
 
 
-function createNote(text) {
+function createNoteObject(text) {
     const newNote = {
         id: Date.now(),
         text: text,
@@ -68,6 +68,7 @@ function deleteNote(id) {
 
 function favoriteTask(id) {
     console.log(id)
+
     notes = notes.map((note) => {
         if (note.id === id ) {
             return {...note, favorite: !note.favorite}
@@ -80,53 +81,121 @@ function favoriteTask(id) {
     renderTask()         
 }
 
+function editNote(id, text) {
+    const myNotesContainer = document.querySelector(".my-notes")
+
+    const note = notes.find(n => n.id === id)
+        
+    const editTextModal = document.createElement("div")
+    editTextModal.classList.add("edit-note-modal", "edit-note-visible")
+
+    const editText = document.createElement("textarea")
+    editText.classList.add("edit-note-text")
+    editText.value = text
+    editText.addEventListener("input", () => {
+        errorMsg.style.display = "none"
+    })
+
+    const btnSaveEdit = document.createElement("button")
+    btnSaveEdit.classList.add("save-edit-btn")
+    btnSaveEdit.textContent = "save"
+
+    const errorMsg = document.createElement("span")
+    errorMsg.textContent = "A nota não pode ficar vazia..."
+    errorMsg.classList.add("edit-error")
+
+    editTextModal.append(editText, btnSaveEdit, errorMsg)
+
+    myNotesContainer.append(editTextModal)
+
+    btnSaveEdit.addEventListener("click", () => {
+
+        const newText = editText.value.trim()
+
+        if(editText.value !== ""){
+            note.text = newText
+            editTextModal.classList.remove("edit-note-visible")
+            saveNotes()
+            renderTask()
+
+        } else {
+            errorMsg.style.display = "block"
+  
+        }
+        
+    })
+          
+
+}
+
+
+function createNote(note) {
+
+    const li = document.createElement("li")
+    li.classList.add("li-note")
+    li.style.backgroundColor = note.color  
+
+    const noteHeader = document.createElement("div")
+    noteHeader.classList.add("note-header")
+
+    const favBtn = document.createElement("button")
+    favBtn.classList.add("fav-note-btn", "btn-note")
+
+    if(note.favorite){
+        favBtn.classList.add("is-fav")
+        li.classList.add("is-fav")
+    }
+    
+    favBtn.addEventListener("click", () => {          
+        favoriteTask(note.id)    
+    })
+
+    const noteDate = document.createElement("span")
+    noteDate.textContent = note.date 
+    noteDate.classList.add("note-date")
+
+    const btnDel = document.createElement("button");
+    btnDel.textContent = "delete"
+    btnDel.classList.add("del-note-btn", "btn-note")
+
+    const noteTextElement = document.createElement("p")
+    noteTextElement.classList.add("note-text")
+    noteTextElement.textContent = note.text
+
+    btnDel.addEventListener("click", () => {
+        deleteNote(note.id)
+    })
+
+    const editBtn = document.createElement("button")
+    editBtn.textContent = "edit"
+    editBtn.classList.add("edit-note-btn", "btn-note")
+
+    editBtn.addEventListener("click", () => {
+        editNote(note.id, note.text)
+     
+    })
+
+    noteHeader.append(favBtn, noteDate, btnDel)
+    li.append(noteHeader, noteTextElement, editBtn)
+    
+    return li
+}
+
 function renderTask() {
 
     console.log(notes)
+
     list.innerHTML = ""
+    const fragment = document.createDocumentFragment()
 
     notes.forEach(note => {
-        const li = document.createElement("li")
-        li.classList.add("li-note")
-        li.style.backgroundColor = note.color  
-
-        const noteHeader = document.createElement("div")
-        noteHeader.classList.add("note-header")
-
-        const favBtn = document.createElement("button")
-        favBtn.classList.add("favBtn-note")
-
-        if(note.favorite){
-            favBtn.classList.add("isfav")
-            li.classList.add("isfav")
-        }
-        
-        favBtn.addEventListener("click", () => {          
-            favoriteTask(note.id)    
-        })
-
-        const noteDate = document.createElement("span")
-        noteDate.textContent = note.date 
-        noteDate.classList.add("note-date")
-    
-        const btnDel = document.createElement("button");
-        btnDel.textContent = "delete"
-        btnDel.classList.add("delete-note")
-
-        const noteTextElement = document.createElement("p")
-        noteTextElement.classList.add("note-text")
-        noteTextElement.textContent = note.text
-
-        btnDel.addEventListener("click", () => {
-            deleteNote(note.id)
-        })
-
-        noteHeader.append(favBtn, noteDate, btnDel)
-        li.append(noteHeader, noteTextElement)
-        list.appendChild(li)
-
+        const li = createNote(note)
+        fragment.appendChild(li)
     })
+
+    list.appendChild(fragment)
 }
+
 
 function saveNotes() {
     localStorage.setItem("notes", JSON.stringify(notes))
@@ -136,8 +205,13 @@ function loadNotes() {
     const savedNotes = localStorage.getItem("notes")
 
     if(savedNotes){
-        notes = JSON.parse(savedNotes)
-        renderTask()
+        const parsedNotes = JSON.parse(savedNotes)
+
+        if(Array.isArray(parsedNotes)){
+            notes = parsedNotes
+        } else {
+            notes = []
+        }
     }
 }
 

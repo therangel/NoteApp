@@ -49,6 +49,10 @@
     transition: .3s ease;  
 }
 
+.btn-note {
+    cursor: pointer;
+}
+
 .note-header {
     width: 100%;
     display: flex;
@@ -59,15 +63,15 @@
     /* height: 30%; */
 }
 
-.favBtn-note {
+.fav-note-btn {
     background-color: transparent;
     font-size: 1.3rem;
-    cursor: pointer;
+    
     border: none;
     
 }
 
-.favBtn-note::after {
+.fav-note-btn::after {
     content: "\f005";
     font-family: "Font Awesome 7 Free";
     color: rgb(255, 196, 0);
@@ -76,13 +80,13 @@
     border-radius: 5px;
 }
 
-.favBtn-note.isfav::after{
+.fav-note-btn.is-fav::after{
     font-weight: 900;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.459);
     border: 1px solid rgb(255, 238, 0);
 }
 
-.li-note.isfav {
+.li-note.is-fav {
     border: 2px solid rgb(255, 238, 0);
     box-shadow: 0 0 10px rgb(255, 238, 0);
 }
@@ -94,11 +98,10 @@
     opacity: 0.6;
 }
 
-.delete-note {
+.del-note-btn {
     /* width: 50%; */
     padding: 7px;
     border-radius: 5px;
-    cursor: pointer;
     background-color: rgb(179, 18, 18);
     color: white;
     box-shadow: 0px 2px 1px black;
@@ -115,6 +118,17 @@
     word-break: break-all;
     overflow-y:  auto;
 }
+
+.edit-note-btn {
+    align-self: end;
+    width: 30%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: var(--color1);
+    box-shadow: 0px 2px 2px black;
+}
+
+
 
 
 /* MODAL NEW NOTE */
@@ -266,16 +280,90 @@
     transition: .3s;
 }
 
+/* EDIT NOTE MODAL */
+
+.edit-note-modal {
+    
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
+    /* min-height: 300px; */
+    width: 90%;
+    max-width: 350px;
+    padding: 40px 20px;
+    border-radius: 10px;
+
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.5);
+}
+
+.edit-note-modal.edit-note-visible {
+    display: flex;
+}
+
+.edit-note-modal::before {
+    content: "Edit Note";
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: black;
+    font-weight: bold;
+    color: rgb(255, 141, 48);
+}
+
+.edit-note-text {
+    position: relative;
+    resize: none;
+
+    width: 100%;
+    height: 250px;
+
+    padding: 20px;
+
+    border-radius: 5px;  
+    background-color: transparent;
+    box-shadow: inset 0px 0px 10px black;
+    outline: none;
+}
+
+.save-edit-btn {
+    height: 40px;
+    width: 50%;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    background-color: rgb(255, 141, 48);
+    text-transform: uppercase;
+}
+
+.edit-error {
+    display: none;
+    font-size: 0.7rem;
+    color: red;
+}
+
+
 
 @media screen and (min-width: 1024px) {
 
     .li-note:hover {
-        transform: rotate(1deg) translateY(-3px);
+        transform: translateY(-3px);
     }
 
     .modal-add-btn:hover {
         transform: scale(1.1);
     }
 
+    .btn-note:hover {
+        transform: scale(1.05); 
+        transition: .3s;
+    }
 
 }
