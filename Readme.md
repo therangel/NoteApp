@@ -1,29 +1,40 @@
-Modelo de projeto em desenvolvimento , com foco em colocar em pratica minhas habilidades e ao mesmo tempo criar algo interessante e útil.
+# 📝 NotesApp
 
-Sobre o projeto: 
+Um app simples de notas feito com HTML, CSS e JavaScript, com suporte a favoritos e armazenamento no Local Storage.
 
-Um site/webapp de anotações. 
+## 🔗 Demo
 
+Acesse aqui: https://v1-note-app.vercel.app
 
+## 🛠️ Tecnologias utilizadas
 
-Em breve : 
+- HTML
+- CSS
+- JavaScript
 
-1 localStorage (done)
+## ⚙️ Funcionalidades
 
-2 marcar como favorito (done)
+- Criar notas
+- Editar notas
+- Favoritar notas ⭐
+- Salvar no Local Storage
 
-3 contador de notas ()
+## 💡 Aprendizados
 
-4 cores nas notas (done)
+- Manipulação do DOM
+- Local Storage
+- Organização de código JavaScript
 
-5 editar nota (done)
+## 🚧 Melhorias futuras
 
-6 busca ()
+- contador de notas 
 
-7 filtros ()
+- sistema de busca 
 
-8 dark mode ()
+- filtros 
 
-9 fixar nota ()
+- dark mode 
 
-10 drag and drop ()
+- fixar nota 
+
+- drag and drop 
