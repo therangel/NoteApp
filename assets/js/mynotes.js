@@ -66,20 +66,28 @@ function createNoteObject(text) {
 
 function renderTask() {
 
-    console.log(notes)
+    // console.log(notes)
 
+    const noteCont = document.querySelector(".notes-cont")
+    noteCont.textContent = notes.length
+
+    let noteContFav = document.querySelector(".notes-cont-fav")
+    let onlyFavNotes = notes.filter(favNote => favNote.favorite !== false)
+    noteContFav.textContent = onlyFavNotes.length
+    
     list.innerHTML = ""
     const fragment = document.createDocumentFragment()
 
     notes.forEach(note => {
-        const li = createNote(note)
+
+        const li = createNoteElement(note)
         fragment.appendChild(li)
     })
 
     list.appendChild(fragment)
 }
 
-function createNote(note) {
+function createNoteElement(note) {
 
     const li = document.createElement("li")
     li.classList.add("li-note")
@@ -133,11 +141,13 @@ function createNote(note) {
 }
 
 function favoriteTask(id) {
-    console.log(id)
+    // console.log(id)
+
+    
 
     notes = notes.map((note) => {
         if (note.id === id ) {
-            return {...note, favorite: !note.favorite}
+            return {...note, favorite: !note.favorite}   
         }
 
         return note

@@ -12,12 +12,14 @@
     transition: .3s;
 }
 
+
+
 .overlay-notes.active {
     opacity: 1;
     pointer-events: visible;
 }
 
-.notes-section-header{
+.notes-header-section{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,124 +31,16 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
-.note-list {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    gap: 15px;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto; 
-    padding: 10px;
-    
-}
-
-/* Note Card */
-
-.li-note {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
-    gap: 15px;
-    
-    background-color: rgb(209, 209, 209);
-    padding: 20px;
-
-    height: 400px;
-    min-width: 250px;
-    width: 350px;
-
-    border-radius: 10px;
-    /* color: rgb(0, 0, 0); */
-    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.5);
-    transition: .3s ease;  
-}
-
-.btn-note {
-    cursor: pointer;
-}
-
-.note-header {
-    width: 100%;
+.notes-header-icons {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 20px;
-    pad: 10px;
-    /* height: 30%; */
 }
 
-.fav-note-btn {
-    background-color: transparent;
-    font-size: 1.3rem;
-    
-    border: none;
-    
+.notes-cont,
+.notes-cont-fav {
+    color: orange;
 }
-
-.fav-note-btn::after {
-    content: "\f005";
-    font-family: "Font Awesome 7 Free";
-    color: rgb(255, 196, 0);
-    box-shadow: 0px 1px 0px rgb(0, 0, 0, 0.3);
-    padding: 5px;
-    border-radius: 5px;
-}
-
-.fav-note-btn.is-fav::after{
-    font-weight: 900;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.459);
-    border: 1px solid rgb(255, 238, 0);
-}
-
-.li-note.is-fav {
-    border: 2px solid rgb(255, 238, 0);
-    box-shadow: 0 0 10px rgb(255, 238, 0);
-}
-
-.note-date {
-    font-size: 0.7rem;
-    /* text-wrap: wrap; */
-    /* word-break: break-all; */
-    opacity: 0.6;
-}
-
-.del-note-btn {
-    /* width: 50%; */
-    padding: 7px;
-    border-radius: 5px;
-    background-color: rgb(179, 18, 18);
-    color: white;
-    box-shadow: 0px 2px 1px black;
-}
-
-.note-text {
-    background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 70%;
-    border-radius: 5px;
-    padding: 10px;
-
-    word-break: break-all;
-    overflow-y:  auto;
-}
-
-.edit-note-btn {
-    align-self: end;
-    width: 30%;
-    height: 40px;
-    border-radius: 5px;
-    background-color: var(--color1);
-    box-shadow: 0px 2px 2px black;
-}
-
-
 
 
 /* MODAL NEW NOTE */
@@ -296,6 +190,123 @@
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
     transition: .3s;
 }
+
+.note-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; 
+    padding: 10px;
+    
+}
+
+/* Note Card */
+
+.li-note {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 15px;
+    
+    background-color: rgb(209, 209, 209);
+    padding: 20px;
+
+    height: 400px;
+    min-width: 250px;
+    width: 350px;
+
+    border-radius: 10px;
+    /* color: rgb(0, 0, 0); */
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.5);
+    transition: .3s ease;  
+}
+
+.btn-note {
+    cursor: pointer;
+}
+
+.note-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    pad: 10px;
+    /* height: 30%; */
+}
+
+.fav-note-btn {
+    background-color: transparent;
+    font-size: 1.3rem;
+    
+    border: none;
+    
+}
+
+.fav-note-btn::after {
+    content: "\f005";
+    font-family: "Font Awesome 7 Free";
+    color: rgb(255, 196, 0);
+    box-shadow: 0px 1px 0px rgb(0, 0, 0, 0.3);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.fav-note-btn.is-fav::after{
+    font-weight: 900;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.459);
+    border: 1px solid rgb(255, 238, 0);
+}
+
+.li-note.is-fav {
+    border: 2px solid rgb(255, 238, 0);
+    box-shadow: 0 0 10px rgb(255, 238, 0);
+}
+
+.note-date {
+    font-size: 0.7rem;
+    /* text-wrap: wrap; */
+    /* word-break: break-all; */
+    opacity: 0.6;
+}
+
+.del-note-btn {
+    /* width: 50%; */
+    padding: 7px;
+    border-radius: 5px;
+    background-color: rgb(179, 18, 18);
+    color: white;
+    box-shadow: 0px 2px 1px black;
+}
+
+.note-text {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 70%;
+    border-radius: 5px;
+    padding: 10px;
+
+    word-break: break-all;
+    overflow-y:  auto;
+}
+
+.edit-note-btn {
+    align-self: end;
+    width: 30%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: var(--color1);
+    box-shadow: 0px 2px 2px black;
+}
+
 
 /* EDIT NOTE MODAL */
 
