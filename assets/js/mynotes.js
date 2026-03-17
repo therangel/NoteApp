@@ -1,41 +1,42 @@
 
+/* =============== ELEMENTS ================ */
+
 const openNoteModal = document.querySelector(".open-modal-btn")
 const noteModal = document.querySelector(".modal-note")
 const closeNoteModal = document.querySelector(".close-modal-btn")
 const noteText = document.querySelector(".modal-note-text")
 const addNote = document.querySelector(".modal-add-btn")
 const overlayNote = document.querySelector(".overlay-notes")
-
-
-openNoteModal.addEventListener("click", () => {
-    noteModal.classList.add("active")
-    overlayNote.classList.add("active")
-})
-
-closeNoteModal.addEventListener("click", () => {
-    noteModal.classList.remove("active")
-    overlayNote.classList.remove("active")
-})
-
 const list = document.getElementById("note-list");
+const myNotesContainer = document.querySelector(".my-notes")
+const noteCont = document.querySelector(".notes-cont")
+const noteContFav = document.querySelector(".notes-cont-fav")
+
+
+/* ================= STATE ================== */
 
 let notes = []
+// Note Color
+let selectorColorNote = "#ffffff"
+
+
+/* ================= EVENTS ================== */
+
+openNoteModal.addEventListener("click", openModal)
+
+closeNoteModal.addEventListener("click", closeModal)
 
 addNote.addEventListener("click", () => {
     const noteTextContent = noteText.value.trim()
 
     if(noteTextContent !== ""){
         createNoteObject(noteTextContent)
-        noteModal.classList.remove("active")
-        overlayNote.classList.remove("active")
+        closeModal()
         noteText.value = ""
     } else {
         alert("Digite uma tarefa")
     }
 })
-
-// Note Color
-let selectorColorNote = "#ffffff"
 
 document.querySelectorAll(".btn-color-note").forEach(color => {
     color.addEventListener("click", () => {
@@ -43,6 +44,18 @@ document.querySelectorAll(".btn-color-note").forEach(color => {
         noteModal.style.backgroundColor = selectorColorNote
     })
 })
+
+/* ================= FUNCTIONS ================== */
+
+function openModal() {
+    noteModal.classList.add("active")
+    overlayNote.classList.add("active")
+}
+
+function closeModal() {
+    noteModal.classList.remove("active")
+    overlayNote.classList.remove("active")
+}
 
 
 function createNoteObject(text) {
@@ -60,19 +73,16 @@ function createNoteObject(text) {
     noteModal.style.backgroundColor = "#ffffff"
 
     
-    renderTask() 
+    renderNote() 
     saveNotes() 
 }
 
-function renderTask() {
+function renderNote() {
 
-    // console.log(notes)
-
-    const noteCont = document.querySelector(".notes-cont")
     noteCont.textContent = notes.length
 
-    let noteContFav = document.querySelector(".notes-cont-fav")
     let onlyFavNotes = notes.filter(favNote => favNote.favorite !== false)
+
     noteContFav.textContent = onlyFavNotes.length
     
     list.innerHTML = ""
@@ -105,7 +115,7 @@ function createNoteElement(note) {
     }
     
     favBtn.addEventListener("click", () => {          
-        favoriteTask(note.id)    
+        favoriteNote(note.id)    
     })
 
     const noteDate = document.createElement("span")
@@ -140,11 +150,8 @@ function createNoteElement(note) {
     return li
 }
 
-function favoriteTask(id) {
-    // console.log(id)
-
-    
-
+function favoriteNote(id) {
+   
     notes = notes.map((note) => {
         if (note.id === id ) {
             return {...note, favorite: !note.favorite}   
@@ -154,18 +161,20 @@ function favoriteTask(id) {
     })
 
     saveNotes()
-    renderTask()         
+    renderNote()         
 }
 
 function deleteNote(id) {
     notes = notes.filter(note => note.id !== id)
 
     saveNotes()
-    renderTask()
+    renderNote()
 }
 
 function editNote(id, text) {
-    const myNotesContainer = document.querySelector(".my-notes")
+
+    const existingModal = document.querySelector(".edit-note-modal")
+    if (existingModal) existingModal.remove()
 
     const note = notes.find(n => n.id === id)
         
@@ -204,12 +213,12 @@ function editNote(id, text) {
 
         const newText = editText.value.trim()
 
-        if(editText.value !== ""){
+        if(newText !== ""){
             note.text = newText
             editTextModal.classList.remove("edit-note-visible")
             overlayNote.classList.remove("active")
             saveNotes()
-            renderTask()
+            renderNote()
 
         } else {
             errorMsg.style.display = "block"
@@ -237,7 +246,7 @@ function loadNotes() {
 }
 
 loadNotes()
-renderTask()
+renderNote()
 
 
 
