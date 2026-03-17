@@ -4,13 +4,17 @@ const noteModal = document.querySelector(".modal-note")
 const closeNoteModal = document.querySelector(".close-modal-btn")
 const noteText = document.querySelector(".modal-note-text")
 const addNote = document.querySelector(".modal-add-btn")
+const overlayNote = document.querySelector(".overlay-notes")
+
 
 openNoteModal.addEventListener("click", () => {
     noteModal.classList.add("active")
+    overlayNote.classList.add("active")
 })
 
 closeNoteModal.addEventListener("click", () => {
     noteModal.classList.remove("active")
+    overlayNote.classList.remove("active")
 })
 
 const list = document.getElementById("note-list");
@@ -23,13 +27,14 @@ addNote.addEventListener("click", () => {
     if(noteTextContent !== ""){
         createNoteObject(noteTextContent)
         noteModal.classList.remove("active")
+        overlayNote.classList.remove("active")
         noteText.value = ""
     } else {
         alert("Digite uma tarefa")
     }
 })
 
-// Color Note
+// Note Color
 let selectorColorNote = "#ffffff"
 
 document.querySelectorAll(".btn-color-note").forEach(color => {
@@ -59,75 +64,20 @@ function createNoteObject(text) {
     saveNotes() 
 }
 
-function deleteNote(id) {
-    notes = notes.filter(note => note.id !== id)
+function renderTask() {
 
-    saveNotes()
-    renderTask()
-}
+    console.log(notes)
 
-function favoriteTask(id) {
-    console.log(id)
+    list.innerHTML = ""
+    const fragment = document.createDocumentFragment()
 
-    notes = notes.map((note) => {
-        if (note.id === id ) {
-            return {...note, favorite: !note.favorite}
-        }
-
-        return note
+    notes.forEach(note => {
+        const li = createNote(note)
+        fragment.appendChild(li)
     })
 
-    saveNotes()
-    renderTask()         
+    list.appendChild(fragment)
 }
-
-function editNote(id, text) {
-    const myNotesContainer = document.querySelector(".my-notes")
-
-    const note = notes.find(n => n.id === id)
-        
-    const editTextModal = document.createElement("div")
-    editTextModal.classList.add("edit-note-modal", "edit-note-visible")
-
-    const editText = document.createElement("textarea")
-    editText.classList.add("edit-note-text")
-    editText.value = text
-    editText.addEventListener("input", () => {
-        errorMsg.style.display = "none"
-    })
-
-    const btnSaveEdit = document.createElement("button")
-    btnSaveEdit.classList.add("save-edit-btn")
-    btnSaveEdit.textContent = "save"
-
-    const errorMsg = document.createElement("span")
-    errorMsg.textContent = "A nota não pode ficar vazia..."
-    errorMsg.classList.add("edit-error")
-
-    editTextModal.append(editText, btnSaveEdit, errorMsg)
-
-    myNotesContainer.append(editTextModal)
-
-    btnSaveEdit.addEventListener("click", () => {
-
-        const newText = editText.value.trim()
-
-        if(editText.value !== ""){
-            note.text = newText
-            editTextModal.classList.remove("edit-note-visible")
-            saveNotes()
-            renderTask()
-
-        } else {
-            errorMsg.style.display = "block"
-  
-        }
-        
-    })
-          
-
-}
-
 
 function createNote(note) {
 
@@ -172,6 +122,7 @@ function createNote(note) {
 
     editBtn.addEventListener("click", () => {
         editNote(note.id, note.text)
+        overlayNote.classList.add("active")
      
     })
 
@@ -181,19 +132,79 @@ function createNote(note) {
     return li
 }
 
-function renderTask() {
+function favoriteTask(id) {
+    console.log(id)
 
-    console.log(notes)
+    notes = notes.map((note) => {
+        if (note.id === id ) {
+            return {...note, favorite: !note.favorite}
+        }
 
-    list.innerHTML = ""
-    const fragment = document.createDocumentFragment()
-
-    notes.forEach(note => {
-        const li = createNote(note)
-        fragment.appendChild(li)
+        return note
     })
 
-    list.appendChild(fragment)
+    saveNotes()
+    renderTask()         
+}
+
+function deleteNote(id) {
+    notes = notes.filter(note => note.id !== id)
+
+    saveNotes()
+    renderTask()
+}
+
+function editNote(id, text) {
+    const myNotesContainer = document.querySelector(".my-notes")
+
+    const note = notes.find(n => n.id === id)
+        
+    const editTextModal = document.createElement("div")
+    editTextModal.classList.add("edit-note-modal", "edit-note-visible")
+
+    const editText = document.createElement("textarea")
+    editText.classList.add("edit-note-text")
+    editText.value = text
+    editText.addEventListener("input", () => {
+        errorMsg.style.display = "none"
+    })
+
+    const btnSaveEdit = document.createElement("button")
+    btnSaveEdit.classList.add("save-edit-btn")
+    btnSaveEdit.textContent = "save"
+
+    const btnCancelEdit = document.createElement("button")
+    btnCancelEdit.classList.add("cancel-edit-btn")
+    btnCancelEdit.textContent = "cancel"
+
+    btnCancelEdit.addEventListener("click", () => {
+        editTextModal.classList.remove("edit-note-visible")
+        overlayNote.classList.remove("active")
+    })
+
+    const errorMsg = document.createElement("span")
+    errorMsg.textContent = "A nota não pode ficar vazia..."
+    errorMsg.classList.add("edit-error")
+
+    editTextModal.append(editText, btnCancelEdit, btnSaveEdit, errorMsg)
+
+    myNotesContainer.append(editTextModal)
+
+    btnSaveEdit.addEventListener("click", () => {
+
+        const newText = editText.value.trim()
+
+        if(editText.value !== ""){
+            note.text = newText
+            editTextModal.classList.remove("edit-note-visible")
+            overlayNote.classList.remove("active")
+            saveNotes()
+            renderTask()
+
+        } else {
+            errorMsg.style.display = "block"
+        }  
+    })
 }
 
 

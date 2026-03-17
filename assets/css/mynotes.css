@@ -1,3 +1,21 @@
+.overlay-notes {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.overlay-notes.active {
+    opacity: 1;
+    pointer-events: visible;
+}
 
 .notes-section-header{
     display: flex;
@@ -178,6 +196,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 5;
 
     display: flex;
     
@@ -275,7 +294,7 @@
     align-self: end;
     cursor: pointer;
     border-radius: 5px;
-    background-color: rgba(219, 219, 219);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
     transition: .3s;
 }
@@ -284,29 +303,35 @@
 
 .edit-note-modal {
     
-    background-color: white;
+    background-color: rgba(255, 255, 255);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     
     display: none;
-    flex-direction: column;
-    align-items: center;
+    /* flex-direction: column; */
+    /* align-items: center; */
     gap: 20px;
+
+    grid-template-columns:1fr 1fr;
+    grid-template-rows: 2, 1fr;
     
     /* min-height: 300px; */
-    width: 90%;
+    width: 90vw;
     max-width: 350px;
     padding: 40px 20px;
     border-radius: 10px;
 
     box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.5);
+    z-index: 3;
 }
 
+
 .edit-note-modal.edit-note-visible {
-    display: flex;
+    display: grid;
 }
+
 
 .edit-note-modal::before {
     content: "Edit Note";
@@ -319,9 +344,9 @@
 }
 
 .edit-note-text {
-    position: relative;
+    /* position: relative; */
     resize: none;
-
+    grid-column: 1 / 3;
     width: 100%;
     height: 250px;
 
@@ -333,20 +358,34 @@
     outline: none;
 }
 
+.cancel-edit-btn,
 .save-edit-btn {
     height: 40px;
-    width: 50%;
+    width: 60%;
     cursor: pointer;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    background-color: rgb(255, 141, 48);
     text-transform: uppercase;
+    justify-self: center;
+}
+
+.cancel-edit-btn {
+    /* align-self: stretch; */
+    background-color: rgb(255, 78, 78)
+}
+
+.save-edit-btn {
+    /* align-self: right; */
+    background-color: rgb(255, 141, 48);
+    
 }
 
 .edit-error {
     display: none;
     font-size: 0.7rem;
     color: red;
+    grid-column: 1 / 3;
+    text-align: center;
 }
 
 

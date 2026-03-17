@@ -27,6 +27,8 @@ Acesse aqui: https://v1-note-app.vercel.app
 
 ## 🚧 Melhorias futuras
 
+- página de favoritos
+
 - contador de notas 
 
 - sistema de busca 
