@@ -14,24 +14,26 @@
 
     --color-background: #ffffff;
     --color-hover-bg: rgba(0, 0, 0, 0.1);
+    --color-hover-lighter-bg: rgba(0, 0, 0, 0.05);
   
     --color-text: #000000;
     
     --color-error: #e74c3c;
     --color-shadow: rgba(0, 0, 0, 0.3);
+}
 
-    .dark-theme {
-        --color-primary: #d67214;
-        --color-secondary: #ffc77d;
+.dark-theme {
+    --color-primary: #d67214;
+    --color-secondary: #ffc77d;
 
-        --color-background: #252525;
-        --color-hover-bg: rgba(0, 0, 0, 0.1);
+    --color-background: #252525;
+    --color-hover-bg: rgba(255, 255, 255, 0.1);
+    --color-hover-lighter-bg: rgba(255, 255, 255, 0.05);
 
-        --color-text: #ffffff;
-        
-        --color-error: #e74c3c;
-        --color-shadow: rgba(0, 0, 0, 0.3);
-    }
+    --color-text: #ffffff;
+    
+    --color-error: #e74c3c;
+    --color-shadow: rgba(0, 0, 0, 0.3);
 }
 
 
@@ -125,7 +127,7 @@
 }
 
 .sidebar-link:hover {
-    background-color: rgba(0, 0, 0, 0.06);
+    background-color: var(--color-hover-lighter-bg);
 }
 
 .sidebar-link.active {

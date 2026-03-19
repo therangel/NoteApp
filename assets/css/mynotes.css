@@ -12,8 +12,6 @@
     transition: .3s;
 }
 
-
-
 .overlay-notes.active {
     opacity: 1;
     pointer-events: visible;
