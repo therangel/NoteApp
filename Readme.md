@@ -16,7 +16,7 @@ Acesse aqui: https://v1-note-app.vercel.app
 
 - Criar notas
 - Editar notas
-- Favoritar notas ⭐
+- Favoritar notas 
 - Salvar no Local Storage
 
 ## 💡 Aprendizados
@@ -29,7 +29,7 @@ Acesse aqui: https://v1-note-app.vercel.app
 
 - página de favoritos
 
-- contador de notas 
+- contador de notas e favoritos ✅
 
 - sistema de busca 
 

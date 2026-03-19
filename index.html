@@ -26,8 +26,8 @@
                 </div>
                 <nav class="navbar">
                     <ul class="navbar-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="./assets/pages/mynotes.html">My Notes</a></li>
+                        <li><a class="sidebar-link" href="index.html">Home</a></li>
+                        <li><a class="sidebar-link" href="./assets/pages/mynotes.html">My Notes</a></li>
                     </ul>
                 </nav>
             </div>
@@ -47,16 +47,18 @@
                 </div>
 
                 <div class="main-header-box">
-                    <a href="#">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </a>
-                    <a href="#" class="main-header-text">
-                        <i class="fa-solid fa-moon"></i>
-                        <i class="fa-solid fa-sun" style="display: none;"></i>
-                    </a>
-                    <a href="#" class="main-header-text">
+                   
+                    <div class="theme-buttons">
+                        <button class="toggle-theme dark-btn">
+                            <i class="fa-solid fa-moon"></i>  
+                        </button>
+                        <button class="toggle-theme light-btn">
+                            <i class="fa-solid fa-sun "></i>
+                        </button>
+                    </div>
+                    <!-- <a href="#" class="main-header-text">
                         <i class="fa-solid fa-download"></i>
-                    </a>
+                    </a> -->
                 </div>
             </header>
             <!-- ============================= -->
@@ -67,8 +69,10 @@
             </div>
         </main>
     </div>
-    
+
+    <script src="assets/js/global.js"></script>
     <script src="assets/js/sidebar.js"></script>
+    
 
 </body>
 </html>

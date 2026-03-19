@@ -165,10 +165,18 @@ function favoriteNote(id) {
 }
 
 function deleteNote(id) {
-    notes = notes.filter(note => note.id !== id)
+    let response = confirm("Are you sure you want to remove this note?")
 
-    saveNotes()
-    renderNote()
+    if(!response) {
+        return
+
+    } else {
+         notes = notes.filter(note => note.id !== id)
+
+        saveNotes()
+        renderNote()
+    }
+   
 }
 
 function editNote(id, text) {
@@ -180,6 +188,7 @@ function editNote(id, text) {
         
     const editTextModal = document.createElement("div")
     editTextModal.classList.add("edit-note-modal", "edit-note-visible")
+    editTextModal.style.backgroundColor = note.color
 
     const editText = document.createElement("textarea")
     editText.classList.add("edit-note-text")

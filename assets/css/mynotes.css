@@ -349,7 +349,7 @@
     left: 20px;
     color: black;
     font-weight: bold;
-    color: rgb(255, 141, 48);
+    color: rgb(255, 255, 255);
 }
 
 .edit-note-text {
@@ -385,7 +385,7 @@
 
 .save-edit-btn {
     /* align-self: right; */
-    background-color: rgb(255, 141, 48);
+    background-color: rgb(255, 186, 130);
     
 }
 
