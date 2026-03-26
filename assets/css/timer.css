@@ -1,0 +1,146 @@
+
+.section-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    padding: 1.5rem;
+}
+
+
+.timer-container {
+    display: flex;
+    align-items: center;
+}
+
+.minute,
+.second,
+.separator {
+    font-size: clamp(2rem, 20vw, 10rem);
+    color: var(--color-text);
+}
+
+
+.play-pause {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: clamp(2rem, 5vw, 5rem);
+}
+
+.play-pause::before {
+    content: "PLAY";
+    color: var(--color-text);
+}
+
+.play-pause.active::before {
+    content: "PAUSE";
+    color: var(--color-text);
+}
+
+
+.set-timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 300px;
+    width: 100%;
+
+    
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+
+    border-radius: 1rem;
+    border: none;
+    box-shadow:  0 0 10px black;
+}
+
+.set-timer.active {
+    display: flex;
+}
+
+.set-timer-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-settings {
+    padding: 0.3rem 0.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(167, 35, 35);
+    color: white;
+    cursor: pointer;
+}
+
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 2rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-group input {
+    width: 100px;
+    height: 30px;
+    padding: 0.3rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 3px black;
+}
+
+.save-settings {
+    border: none;
+    background-color: var(--color-primary);
+    padding: 0.3rem;
+    box-shadow: 0 0 5px black;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+
+.timer-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.fa-gear, .fa-arrow-rotate-left {
+    color: var(--color-secondary);
+    font-size: 2rem;
+    text-shadow: 0px 0px 7px var(--color-primary);
+}
+
+.reset {
+    font-size: 2rem;
+    color: var(--color-text-neon);
+    text-shadow: 0px 0px 7px var(--color-primary);
+    font-weight: bold;
+    
+    display: none;
+}
+
+.reset.active {
+    display: block;
+}

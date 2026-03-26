@@ -35,7 +35,7 @@ Acesse aqui: https://v1-note-app.vercel.app
 
 - filtros 
 
-- dark mode 
+- dark mode ✅
 
 - fixar nota 
 

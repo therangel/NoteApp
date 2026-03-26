@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script>
+        const savedTheme = localStorage.getItem("theme")
+
+        if (savedTheme === "dark") {
+            document.documentElement.classList.add("dark-theme")
+        }
+    </script>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/timer.css">
+
+</head>
+
+<body class="body">
+    <div class="container-wrapper">
+        <div class="overlay"></div>
+        <header class="sidebar" >
+            <div class="sidebar-content">
+                <div class="sidebar-box">
+                    <h1 class="logo">NotePad</h1>
+                    <button class="burger-button close">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <nav class="navbar">
+                    <ul class="navbar-menu">
+                        <li><a class="sidebar-link" href="../../index.html">Home</a></li>
+                        <li><a class="sidebar-link" href="./notes.html">Notes</a></li>
+                        <li><a class="sidebar-link" href="./timer.html">Timer</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <p class="copyright">&copy; MatheusRangel</p>
+        </header>
+        
+        <!-- MAIN CONTENT -->
+        <main class="main">
+        
+            <header class="main-header">
+                <div class="main-header-box">
+                    <button class="burger-button open">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <span class="main-header-text">Timer</span>
+                </div>
+
+                <div class="main-header-box">
+                   
+                    <button class="toggle-theme">
+                        <i class="fa-solid fa-sun"></i>
+                        <i class="fa-solid fa-moon"></i>  
+                    </button>
+        
+                </div>
+            </header>
+
+            <div class="container-section">
+                <section class="section section-timer">
+
+                    <div class="section-header">
+                        <h2 class="section-title">Let's Focus</h2>
+                    </div>
+
+                    <div class="section-body">
+                        <div class="timer">
+                            <div class="timer-container">
+                                <p class="minute">25</p>
+                                <p class="separator">:</p>
+                                <p class="second">00</p>
+                            </div>
+                            
+                            <button class="play-pause"></button>
+                        </div>
+
+                        <div class="timer-buttons">
+                    
+                            <button class="settings">
+                                <i class="fa-solid fa-gear"></i>
+                            </button>
+
+                            <button class="reset">
+                                <i class="fa-solid fa-arrow-rotate-left"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <dialog class="set-timer">
+
+                        <div class="set-timer-header">
+                            <h2>Ajustes</h2>
+                            <button class="close-settings">X</button>
+                        </div>
+
+                        <div class="input-container">
+                            <div class="input-group">
+                                <h3>Estudo/Trabalho</h3>
+                                <label for="min"> Minutos:
+                                    <input class="study-hour" type="number" id="min" min="0" max="60">
+                                </label>
+                            </div>
+
+                            <div class="input-group">
+                                <h3>Pausa</h3>
+                                <label for="sec"> Minutos:
+                                    <input class="break-hour" type="number" id="sec" min="0" max="60">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="set-timer-footer">
+                            <button class="save-settings">Salvar</button>
+                        </div>
+                    </dialog>
+
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="../js/main.js"></script>
+    <script type="module" src="../js/timer.js"></script>
+</body>
+</html>

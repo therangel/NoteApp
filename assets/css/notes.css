@@ -18,15 +18,7 @@
 }
 
 .notes-header-section{
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    width: 100%;
-    padding: 0px 10px 20px 10px;
-    /* max-width: 600px;  */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .notes-header-icons {
@@ -35,9 +27,9 @@
     gap: 20px;
 }
 
-.notes-cont,
-.notes-cont-fav {
-    color: orange;
+.notes-header-icons i, 
+.notes-header-icons span {
+    color: var(--color-secondary);
 }
 
 
@@ -51,7 +43,7 @@
     padding: 1.1rem;
     border-radius: 50%;
     cursor: pointer;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
 }
 
 .open-modal-btn::before {
@@ -63,7 +55,7 @@
     border-radius: 5px;
     padding: 5px;
     color: var(--color-text);
-    box-shadow: 0px 0px 3px var(--color-primary);
+    box-shadow: 0px 0px 3px var(--color-secondary);
     opacity: 0;
     transition: .3s;
 }
