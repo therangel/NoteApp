@@ -144,7 +144,8 @@ button {
 }
 
 .logo {
-    color: var(--color-text);
+    color: var(--color-secondary);
+    font-size: 1.3rem;
 }
 
 .copyright {

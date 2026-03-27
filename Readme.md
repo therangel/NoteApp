@@ -1,6 +1,8 @@
-# 📝 NotesApp
+# 📝 StudyMoment
 
-Um app simples de notas feito com HTML, CSS e JavaScript, com suporte a favoritos e armazenamento no Local Storage.
+Um aplicativo focado em auxiliar nos estudos, com pagina de anotações e um timer para concentração. 
+
+Está sendo desenvolvido no momento utilizando HTML, CSS e JavaScript, mas em breve será adicionado novas tecnologias conforme for expandindo.
 
 ## 🔗 Demo
 
@@ -14,29 +16,45 @@ Acesse aqui: https://v1-note-app.vercel.app
 
 ## ⚙️ Funcionalidades
 
-- Criar notas
-- Editar notas
-- Favoritar notas 
-- Salvar no Local Storage
+• Página de anotções
+
+    - Criar notas
+    - Editar notas
+    - Favoritar notas 
+    - Salvar no Local Storage
+
+
+• Página de Timer (Técnica de Pomodoro como default)
+
+    - Escolher tempo de estudo/pausa
+    - Resetar timer
+    - Notificação na troca de cada turno
+    - em breve mais...
 
 ## 💡 Aprendizados
 
 - Manipulação do DOM
 - Local Storage
 - Organização de código JavaScript
+- Lógica de Programação
 
 ## 🚧 Melhorias futuras
 
-- página de favoritos
+- dark mode ✅
 
 - contador de notas e favoritos ✅
+
+- página de favoritos
 
 - sistema de busca 
 
 - filtros 
 
-- dark mode ✅
-
-- fixar nota 
+- fixar nota no home
 
 - drag and drop 
+
+- progresso de estudo
+
+- sistema de login
+
