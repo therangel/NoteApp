@@ -9,9 +9,9 @@ const closeSetTimer = document.querySelector(".close-settings");
 const saveSetTimer = document.querySelector(".save-settings");
 
 
-const newTurnSound = new Audio("./src/assets/audio/BigBell.mp3");
-const workVoice = new Audio("./src/assets/audio/work--voice.mp3");
-const breakVoice = new Audio("./src/assets/audio/break--voice.mp3");
+const newTurnSound = new Audio("../assets/audio/BigBell.mp3");
+const studyVoice = new Audio("../assets/audio/study--voice.mp3");
+const breakVoice = new Audio("../assets/audio/break--voice.mp3");
 
 // STATE ========================================== 
 let min = 25;
@@ -113,8 +113,10 @@ function loop() {
     if (!isRunning) return
 
     timerActive();
-    // Usamos 100ms para o cronômetro ser muito mais sensível ao seu clique
-    myInterval = setTimeout(loop, 1000); 
+    
+    // Usei 100ms para o cronômetro ser muito mais sensível ao clique e não travar o número na hora da troca de turno
+
+    myInterval = setTimeout(loop, 100); 
 }
 
 function timerActive() {
@@ -131,7 +133,7 @@ function timerActive() {
         
         } else {
 
-            notification(newTurnSound, workVoice);
+            notification(newTurnSound, studyVoice);
             mode = "work";
             remaining = studyDuration * 60 * 1000;
         }
